@@ -23,6 +23,7 @@ export interface Ireview {
   review: string;
   rating: number;
 }
+
 export type HotelsType = 'Отель' | 'Апартаменты' | 'Гостевой дом';
 
 export interface IHotelPhotoType {
