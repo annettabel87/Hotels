@@ -7,3 +7,7 @@ export const FILTERS_NAME = {
   RATING: 'rating',
   STARS: 'stars',
 };
+
+export const LOCAL_STORAGE_KEYS = {
+  USER_DATA: 'user',
+};
