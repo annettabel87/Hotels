@@ -2,11 +2,14 @@ import { observer } from 'mobx-react-lite';
 import hotelsStore from '../../store/hotelsStore/hotelsStore';
 import './App.css';
 import { useEffect } from 'react';
+import { trace } from 'mobx';
 
 const App = observer(() => {
   useEffect(() => {
     hotelsStore.fetchList();
   }, []);
+
+  trace();
 
   return (
     <>
@@ -18,11 +21,24 @@ const App = observer(() => {
         )}
         <button
           onClick={() => {
-            hotelsStore.addFilter('maxPrice', '3000');
-            hotelsStore.addFilter('city', 'Минск');
+            hotelsStore.addFilter('maxPrice', '8000');
           }}
         >
           filter
+        </button>
+        <button
+          onClick={() => {
+            hotelsStore.removeFilter('maxPrice');
+          }}
+        >
+          remove
+        </button>
+        <button
+          onClick={() => {
+            hotelsStore.clearFilters();
+          }}
+        >
+          clear
         </button>
       </div>
       <p>{hotelsStore.error}</p>

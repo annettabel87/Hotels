@@ -9,30 +9,38 @@ class HotelsStore {
   loading: boolean = false;
   error: string = '';
   filters: IFilters = {};
-  _cities: string[] = [];
-  _minPrice: number = 0;
-  _maxPrice: number = 0;
 
   constructor() {
     makeAutoObservable(this);
   }
 
   fetchList = async () => {
-    this.loading = true;
+    this.setLoading(true);
     setTimeout(async () => {
       try {
         const list = await getHotels(DATA_URL);
 
         if (list instanceof Array) {
-          this._hotels = list;
-          this.getDataToSearchPanel();
+          this.setHotels(list);
         }
       } catch (e: unknown) {
         this.error = 'Не удалось загрузить данные.';
       } finally {
-        this.loading = false;
+        this.setLoading(false);
       }
     }, 2000);
+  };
+
+  setLoading = (value: boolean) => {
+    this.loading = value;
+  };
+
+  setHotels = (hotels: IHotel[]) => {
+    this._hotels = hotels;
+  };
+
+  setFilters = (filters: IFilters) => {
+    this.filters = filters;
   };
 
   getHotelById = (id: number) => {
@@ -40,21 +48,17 @@ class HotelsStore {
   };
 
   addFilter = (filter: FiltersType, value: string) => {
-    this.filters[filter] = value;
-    this._hotels = this.filterHotels();
-    this.getDataToSearchPanel();
+    this.filters = { ...this.filters, [filter]: value };
   };
 
   removeFilter = (filter: FiltersType) => {
-    delete this.filters[filter];
-    this._hotels = this.filterHotels();
-    this.getDataToSearchPanel();
+    const copy = Object.assign({}, this.filters);
+    delete copy[filter];
+    this.setFilters(copy);
   };
 
   clearFilters = () => {
     this.filters = {};
-    this._hotels = this.filterHotels();
-    this.getDataToSearchPanel();
   };
 
   private filterHotels = () => {
@@ -66,32 +70,30 @@ class HotelsStore {
   };
 
   get hotels() {
-    return this._hotels;
+    return this.filterHotels();
   }
 
-  getDataToSearchPanel = () => {
-    this._minPrice = this._hotels[0].price;
-    this._maxPrice = this._hotels[0].price;
+  get searchPanelData() {
+    let minPrice = 5000;
+    let maxPrice = 0;
+    const cities: string[] = [];
 
-    for (let i = 0; i < this._hotels.length; i++) {
-      const element = this._hotels[i];
-      if (element.price < this._minPrice) {
-        this._minPrice = element.price;
+    for (let i = 0; i < this.hotels.length; i++) {
+      const element = this.hotels[i];
+      if (element.price < minPrice) {
+        minPrice = element.price;
       }
-      if (element.price > this._maxPrice) {
-        this._maxPrice = element.price;
+      if (element.price > maxPrice) {
+        maxPrice = element.price;
       }
-      if (!this._cities.includes(element.address.city)) {
-        this._cities.push(element.address.city);
+      if (!cities.includes(element.address.city)) {
+        cities.push(element.address.city);
       }
     }
-  };
-
-  get searchPanelData() {
     return {
-      cities: this._cities,
-      minPrice: this._minPrice,
-      maxPrice: this._maxPrice,
+      cities,
+      minPrice,
+      maxPrice,
     };
   }
 }
