@@ -15,6 +15,7 @@ export const MainPage = observer(() => {
               userName: 'Anna',
               email: 'anna@mail.ru',
               password: '12345',
+              prefix: '7',
               phone: '+79129321359',
             });
           }}

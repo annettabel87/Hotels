@@ -11,6 +11,8 @@ import styles from './HeaderComponent.module.css';
 export const HeaderComponent = observer(() => {
   const location = useLocation();
 
+  console.log(authStore.profile?.userName);
+
   const items: MenuProps['items'] = [
     {
       key: '1',

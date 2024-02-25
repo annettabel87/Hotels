@@ -5,6 +5,7 @@ class UsersStore {
   private _users: IUser[] = [];
   error: string = '';
   isLoading: boolean = false;
+  isCompleted: boolean = false;
 
   constructor() {
     makeAutoObservable(this);
@@ -19,6 +20,7 @@ class UsersStore {
       if (!finedUser) {
         const newUser = { ...user, id: Math.random(), isAuth: false };
         this._users = [...this._users, newUser];
+        this.setIsCompleted(true);
       } else {
         this.setError('Такой пользователь уже зарегистрирован');
       }
@@ -28,6 +30,10 @@ class UsersStore {
 
   setLoading = (value: boolean) => {
     this.isLoading = value;
+  };
+
+  setIsCompleted = (value: boolean) => {
+    this.isCompleted = value;
   };
 
   setError = (value: string) => {

@@ -42,6 +42,7 @@ export interface IUser {
   userName: string;
   email: string;
   password: string;
+  prefix: string;
   phone: string;
   history?: IReservation[];
   isAuth: boolean;
@@ -59,4 +60,9 @@ export interface IReservation {
   timestamp: number;
   userId: number;
   price: number;
+}
+
+export interface IRegisterResponse {
+  ok: boolean;
+  status: number;
 }
