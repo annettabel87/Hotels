@@ -1,0 +1,26 @@
+.header {
+  text-align: 'center';
+  color: var(--main-white);
+  padding: 8px 16px;
+  background-color: var(--main-color);
+  height: 100%
+}
+
+.container {
+  max-width: var(--container-width);
+  margin: 0 auto;
+  height: 100%;
+}
+
+.logo {
+  height: 50px;
+}
+
+.btn {
+  color: var(--main-color);
+  font-weight: 500;
+}
+
+.btn:hover {
+  opacity: 0.9;
+}

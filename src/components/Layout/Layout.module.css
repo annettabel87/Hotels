@@ -1,0 +1,10 @@
+.layoutStyle {
+  width: 100vw;
+  min-height: 100vh;
+}
+
+.content {
+  flex-shrink: 1;
+  color: var(--dark-text);
+  background-color: var(--main-white);
+}

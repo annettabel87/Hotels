@@ -9,7 +9,7 @@ import { NotFoundPage } from '../../pages/NotFoundPage/NotFoundPage';
 import { ProfilePage } from '../../pages/ProfilePage/ProfilePage';
 import { RegisterPage } from '../../pages/RegisterPage/RegisterPage';
 import authStore from '../../store/authStore/authStore';
-import Layout from '../Layout/Layout';
+import LayoutComponent from '../Layout/Layout';
 
 export const AppRouter = observer(() => {
   authStore.checkLogin();
@@ -17,7 +17,7 @@ export const AppRouter = observer(() => {
   return (
     <>
       <Routes>
-        <Route path={ROUTE.MAIN} element={<Layout />}>
+        <Route path={ROUTE.MAIN} element={<LayoutComponent />}>
           <Route index element={<MainPage />} />
           <Route path={ROUTE.REGISTER} element={<RegisterPage />} />
           <Route path={ROUTE.LOGIN} element={<LoginPage />} />
