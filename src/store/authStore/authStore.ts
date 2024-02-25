@@ -5,7 +5,6 @@ import { LOCAL_STORAGE_KEYS } from '../../constants/constants';
 
 class AuthStore {
   private _profile: IUser | null = null;
-  isAuth: boolean = false;
   isLoading: boolean = false;
   error: string = '';
 
@@ -13,9 +12,9 @@ class AuthStore {
     makeAutoObservable(this);
   }
 
-  setAuth = (value: boolean) => {
-    this.isAuth = value;
-  };
+  get isAuth() {
+    return this._profile !== null;
+  }
 
   setProfile = (profile: IUser | null) => {
     this._profile = profile;
@@ -29,6 +28,15 @@ class AuthStore {
     this.error = value;
   };
 
+  checkLogin = () => {
+    this.setLoading(true);
+    const user = localStorage.getItem(LOCAL_STORAGE_KEYS.USER_DATA);
+    if (user) {
+      this.setProfile(JSON.parse(user) as IUser);
+    }
+    this.setLoading(false);
+  };
+
   login = (email: string, password: string) => {
     this.setError('');
     this.setLoading(true);
@@ -36,7 +44,6 @@ class AuthStore {
       try {
         const user = usersStore.loginUser(email, password);
         if (user) {
-          this.setAuth(true);
           this.setProfile(user);
           localStorage.setItem(
             LOCAL_STORAGE_KEYS.USER_DATA,
@@ -54,7 +61,6 @@ class AuthStore {
   };
 
   logout = () => {
-    this.setAuth(false);
     this.setProfile(null);
     localStorage.removeItem(LOCAL_STORAGE_KEYS.USER_DATA);
   };

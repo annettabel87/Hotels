@@ -11,3 +11,13 @@ export const FILTERS_NAME = {
 export const LOCAL_STORAGE_KEYS = {
   USER_DATA: 'user',
 };
+
+export const ROUTE = {
+  MAIN: '/',
+  REGISTER: '/register',
+  LOGIN: '/login',
+  HOTELS: '/hotels',
+  HOTEL_CARD: '/hotels/:hotelId',
+  PROFILE: '/profile',
+  ALL: '*',
+};
