@@ -1,0 +1,10 @@
+.form {
+    max-width: 600px;
+    padding: 50px;
+    border-radius: 5px;
+    box-shadow: 2px 3px 15px rgb(168, 167, 167);
+}
+
+.error {
+    color: red;
+}

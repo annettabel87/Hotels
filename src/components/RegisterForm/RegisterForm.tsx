@@ -5,18 +5,9 @@ import usersStore from '../../store/usersStore/usersStore';
 import { FormButton } from '../UI/FormButton/FormButton';
 import PrefixSelector from '../UI/PrefixSelector/PrefixSelector';
 import { useNavigate } from 'react-router-dom';
-import { ROUTE } from '../../constants/constants';
+import { ROUTE, layoutForm } from '../../constants/constants';
 import { ResultView } from '../UI/ResultView/ResultView';
 import styles from './RegisterForm.module.css';
-
-const layout = {
-  labelCol: {
-    span: 8,
-  },
-  wrapperCol: {
-    span: 16,
-  },
-};
 
 export const RegisterForm = observer(() => {
   const navigate = useNavigate();
@@ -37,7 +28,12 @@ export const RegisterForm = observer(() => {
         <Spin size="large" />
       ) : (
         !usersStore.isCompleted && (
-          <Form {...layout} name="register" onFinish={onSubmit} className={styles.form}>
+          <Form
+            {...layoutForm}
+            name="register"
+            onFinish={onSubmit}
+            className={styles.form}
+          >
             <Form.Item
               name="email"
               label="E-mail"

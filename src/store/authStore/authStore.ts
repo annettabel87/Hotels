@@ -53,7 +53,7 @@ class AuthStore {
           throw new Error();
         }
       } catch (error) {
-        this.setError('Не верный email и пароль');
+        this.setError('Не верный email или пароль');
       } finally {
         this.setLoading(false);
       }

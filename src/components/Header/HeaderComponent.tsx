@@ -3,15 +3,13 @@ import { observer } from 'mobx-react-lite';
 import { Layout, Button, Flex, Dropdown, MenuProps } from 'antd';
 import { UserOutlined, LogoutOutlined } from '@ant-design/icons';
 import { ROUTE } from '../../constants/constants';
-import icon from '../../../public/logo.svg';
+import icon from '/logo.svg';
 import authStore from '../../store/authStore/authStore';
 const { Header } = Layout;
 import styles from './HeaderComponent.module.css';
 
 export const HeaderComponent = observer(() => {
   const location = useLocation();
-
-  console.log(authStore.profile?.userName);
 
   const items: MenuProps['items'] = [
     {

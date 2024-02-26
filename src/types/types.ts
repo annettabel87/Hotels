@@ -62,7 +62,7 @@ export interface IReservation {
   price: number;
 }
 
-export interface IRegisterResponse {
-  ok: boolean;
-  status: number;
+export interface ILoginData {
+  email: string;
+  password: string;
 }
