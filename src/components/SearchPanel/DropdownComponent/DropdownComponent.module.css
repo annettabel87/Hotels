@@ -1,0 +1,21 @@
+.inputNumber {
+  width: 60px;
+}
+
+.btn {
+   margin: 0 10px;
+}
+
+.icon {
+  color: #003b95;
+  font-size: '15px';
+   width: '100%'
+}
+
+.primaryBtn {
+  width: 100%;
+}
+
+.dropdown {
+  width: 100%;
+}

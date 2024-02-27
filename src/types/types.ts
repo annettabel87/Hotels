@@ -1,4 +1,5 @@
 import { FILTERS_NAME } from '../constants/constants';
+import { Dayjs } from 'dayjs';
 
 export interface IHotel {
   id: number;
@@ -66,3 +67,18 @@ export interface ILoginData {
   email: string;
   password: string;
 }
+
+export interface ISearchData {
+  city: string;
+  guests: number;
+  startDate?: string;
+  endDate?: string;
+}
+
+export interface ISearchFormData {
+  city: string;
+  guests?: number;
+  RangePicker: valueProps;
+}
+
+export type valueProps = Array<Dayjs | null>;

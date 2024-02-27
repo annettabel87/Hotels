@@ -10,9 +10,15 @@ import { ProfilePage } from '../../pages/ProfilePage/ProfilePage';
 import { RegisterPage } from '../../pages/RegisterPage/RegisterPage';
 import authStore from '../../store/authStore/authStore';
 import LayoutComponent from '../Layout/Layout';
+import hotelsStore from '../../store/hotelsStore/hotelsStore';
+import { useEffect } from 'react';
 
 export const AppRouter = observer(() => {
   authStore.checkLogin();
+
+  useEffect(() => {
+    hotelsStore.fetchList();
+  }, []);
 
   return (
     <>

@@ -1,5 +1,5 @@
 import { makeAutoObservable } from 'mobx';
-import { FiltersType, IFilters, IHotel } from '../../types/types';
+import { FiltersType, IFilters, IHotel, ISearchData } from '../../types/types';
 import { getHotels } from '../../api/hotelsApi';
 import { DATA_URL } from '../../constants/constants';
 import { filterHotels } from '../../helpers/filterHandlers';
@@ -9,6 +9,7 @@ class HotelsStore {
   loading: boolean = false;
   error: string = '';
   filters: IFilters = {};
+  private _searchData: ISearchData = { city: '', guests: 2 };
 
   constructor() {
     makeAutoObservable(this);
@@ -73,7 +74,7 @@ class HotelsStore {
     return this.filterHotels();
   }
 
-  get searchPanelData() {
+  get sidebarPanelData() {
     let minPrice = 5000;
     let maxPrice = 0;
     const cities: string[] = [];
@@ -95,6 +96,25 @@ class HotelsStore {
       minPrice,
       maxPrice,
     };
+  }
+
+  setSearchGuests = (guests: number) => {
+    this.searchData.guests = guests;
+  };
+
+  setSearchCity = (city: string) => {
+    this.searchData.city = city;
+  };
+
+  setSearchStartDate = (date: string) => {
+    this.searchData.startDate = date;
+  };
+
+  setSearchEndDate = (date: string) => {
+    this.searchData.endDate = date;
+  };
+  get searchData() {
+    return this._searchData;
   }
 }
 

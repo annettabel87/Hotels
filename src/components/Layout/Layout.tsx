@@ -4,6 +4,7 @@ import { HeaderComponent } from '../Header/HeaderComponent';
 import { FooterComponent } from '../Footer/FooterComponent';
 const { Content } = Layout;
 import styles from './Layout.module.css';
+import { SearchPanel } from '../SearchPanel/SearchPanel';
 
 const LayoutComponent = () => {
   return (
@@ -11,6 +12,7 @@ const LayoutComponent = () => {
       <Layout className={styles.layoutStyle}>
         <HeaderComponent />
         <Content className={styles.content}>
+          <SearchPanel />
           <Outlet />
         </Content>
         <FooterComponent />
