@@ -8,8 +8,11 @@ class HotelsStore {
   private _hotels: IHotel[] = [];
   loading: boolean = false;
   error: string = '';
-  filters: IFilters = {};
-  private _searchData: ISearchData = { city: '', guests: 2 };
+  filters: IFilters = { stars: 3 };
+  private _searchData: ISearchData = { guests: 2 };
+  defaultMinPrice = 5000;
+  defaultMaxPrice = 0;
+  defaultCities: string[] = [];
 
   constructor() {
     makeAutoObservable(this);
@@ -48,7 +51,7 @@ class HotelsStore {
     return this._hotels.find((hotel) => hotel.id === id);
   };
 
-  addFilter = (filter: FiltersType, value: string) => {
+  addFilter = (filter: FiltersType, value: string | number) => {
     this.filters = { ...this.filters, [filter]: value };
   };
 
@@ -75,35 +78,27 @@ class HotelsStore {
   }
 
   get sidebarPanelData() {
-    let minPrice = 5000;
-    let maxPrice = 0;
-    const cities: string[] = [];
-
     for (let i = 0; i < this.hotels.length; i++) {
       const element = this.hotels[i];
-      if (element.price < minPrice) {
-        minPrice = element.price;
+      if (element.price < this.defaultMinPrice) {
+        this.defaultMinPrice = element.price;
       }
-      if (element.price > maxPrice) {
-        maxPrice = element.price;
+      if (element.price > this.defaultMaxPrice) {
+        this.defaultMaxPrice = element.price;
       }
-      if (!cities.includes(element.address.city)) {
-        cities.push(element.address.city);
+      if (!this.defaultCities.includes(element.address.city)) {
+        this.defaultCities.push(element.address.city);
       }
     }
     return {
-      cities,
-      minPrice,
-      maxPrice,
+      cities: this.defaultCities,
+      minPrice: this.defaultMinPrice,
+      maxPrice: this.defaultMaxPrice,
     };
   }
 
   setSearchGuests = (guests: number) => {
     this.searchData.guests = guests;
-  };
-
-  setSearchCity = (city: string) => {
-    this.searchData.city = city;
   };
 
   setSearchStartDate = (date: string) => {
