@@ -1,4 +1,4 @@
-import { Flex } from 'antd';
+import { Flex, Spin } from 'antd';
 import { CardsField } from '../../components/CardsField/CardsField';
 import { SideBar } from '../../components/SideBar/SideBar';
 import { useNavigate } from 'react-router-dom';
@@ -19,14 +19,19 @@ export const HotelsPage = observer(() => {
 
   return (
     <div className={styles.container}>
-      <Flex justify="between" gap={16}>
-        <SideBar
-          defaultValues={hotelsStore.sidebarPanelData}
-          addFilter={hotelsStore.addFilter}
-          filters={hotelsStore.filters}
-        />
-        <CardsField />
-      </Flex>
+      <p>{hotelsStore.error}</p>
+      {hotelsStore.loading ? (
+        <Spin size="large" className={styles.spin} />
+      ) : (
+        <Flex justify="between" gap={16} className={styles.flex}>
+          <SideBar
+            defaultValues={hotelsStore.sidebarPanelData}
+            addFilter={hotelsStore.addFilter}
+            filters={hotelsStore.filters}
+          />
+          <CardsField />
+        </Flex>
+      )}
     </div>
   );
 });
