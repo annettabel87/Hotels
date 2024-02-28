@@ -1,0 +1,8 @@
+.container {
+    flex: 1 0 auto;
+    max-width: 265px;
+    display: flex;
+    flex-direction: column;
+    border: 1px solid var(--sidebar-border-color);
+    border-radius: 8px;
+}

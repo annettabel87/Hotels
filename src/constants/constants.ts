@@ -1,3 +1,5 @@
+import { IReviewMenuItem } from '../types/types';
+
 export const DATA_URL = '/hotelsData.json';
 
 export const FILTERS_NAME = {
@@ -30,3 +32,11 @@ export const layoutForm = {
     span: 16,
   },
 };
+
+export const REVIEW_MENU_ITEM: IReviewMenuItem[] = [
+  { value: 9, label: 'Супер: 9+' },
+  { value: 8, label: 'Отлично: 8+' },
+  { value: 7, label: 'Очень хорошо: 7+' },
+  { value: 6, label: 'Хорошо: 6+' },
+  { value: 5, label: 'Неплохо: 5+' },
+];

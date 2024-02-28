@@ -6,16 +6,19 @@ const filterHotelsHandler = {
     return hotels.filter((item) => item.address.city === filterCity);
   },
 
-  filterByMinPrice(hotels: IHotel[], minPrice: string) {
-    return hotels.filter((item) => item.price >= +minPrice);
+  filterByMinPrice(hotels: IHotel[], minPrice: number) {
+    return hotels.filter((item) => item.price >= minPrice);
   },
 
-  filterByMaxPrice(hotels: IHotel[], maxPrice: string) {
-    return hotels.filter((item) => item.price <= +maxPrice);
+  filterByMaxPrice(hotels: IHotel[], maxPrice: number) {
+    return hotels.filter((item) => item.price <= maxPrice);
   },
 
-  filterByRating(hotels: IHotel[], rating: string) {
-    return hotels.filter((item) => item.raring >= +rating);
+  filterByRating(hotels: IHotel[], rating: number) {
+    return hotels.filter((item) => item.raring >= rating);
+  },
+  filterByStars(hotels: IHotel[], stars: number) {
+    return hotels.filter((item) => item.stars >= stars);
   },
 };
 
@@ -26,17 +29,20 @@ export const filterHotels = (hotels: IHotel[], filters: IFilters) => {
 
     switch (key) {
       case FILTERS_NAME.CITY:
-        result = filterHotelsHandler.filterByCity(result, value);
+        result = filterHotelsHandler.filterByCity(result, value.toString());
 
         break;
       case FILTERS_NAME.MIN_PRICE:
-        result = filterHotelsHandler.filterByMinPrice(result, value);
+        result = filterHotelsHandler.filterByMinPrice(result, +value);
         break;
       case FILTERS_NAME.MAX_PRICE:
-        result = filterHotelsHandler.filterByMaxPrice(result, value);
+        result = filterHotelsHandler.filterByMaxPrice(result, +value);
         break;
       case FILTERS_NAME.RATING:
-        result = filterHotelsHandler.filterByRating(result, value);
+        result = filterHotelsHandler.filterByRating(result, +value);
+        break;
+      case FILTERS_NAME.STARS:
+        result = filterHotelsHandler.filterByStars(result, +value);
         break;
       default:
         break;

@@ -35,7 +35,7 @@ export interface IHotelPhotoType {
 export type FiltersType = (typeof FILTERS_NAME)[keyof typeof FILTERS_NAME];
 
 export type IFilters = {
-  [index: FiltersType]: string;
+  [index: FiltersType]: string | number;
 };
 
 export interface IUser {
@@ -69,7 +69,6 @@ export interface ILoginData {
 }
 
 export interface ISearchData {
-  city: string;
   guests: number;
   startDate?: string;
   endDate?: string;
@@ -82,3 +81,14 @@ export interface ISearchFormData {
 }
 
 export type valueProps = Array<Dayjs | null>;
+
+export interface IReviewMenuItem {
+  value: number;
+  label: string;
+}
+
+export interface IDefaultSidebarValues {
+  cities: string[];
+  minPrice: number;
+  maxPrice: number;
+}

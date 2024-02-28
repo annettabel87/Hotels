@@ -1,3 +1,3 @@
 export const HotelCardPage = () => {
-  return <div>HotelCardPage</div>;
+  return <div>hotel</div>;
 };

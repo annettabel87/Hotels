@@ -7,7 +7,7 @@ import { DropdownComponent } from './DropdownComponent/DropdownComponent';
 import { getCitiesFromData } from '../../helpers/getCitiesFromData';
 import { valueProps } from '../../types/types';
 import { useLocation, useNavigate } from 'react-router-dom';
-import { ROUTE } from '../../constants/constants';
+import { FILTERS_NAME, ROUTE } from '../../constants/constants';
 import styles from './SearchPanel.module.css';
 
 export const SearchPanel = observer(() => {
@@ -19,12 +19,15 @@ export const SearchPanel = observer(() => {
     if (!value) {
       setAutoCompleteResult([]);
     } else {
-      setAutoCompleteResult(getCitiesFromData(hotelsStore.hotels, value));
+      setAutoCompleteResult(
+        getCitiesFromData(hotelsStore.sidebarPanelData.cities, value)
+      );
     }
   };
 
   const onCityChange = (value: string) => {
-    hotelsStore.setSearchCity(value);
+    console.log(value);
+    hotelsStore.addFilter(FILTERS_NAME.CITY, value);
   };
 
   const cityOptions = autoCompleteResult.map((city) => ({
@@ -60,7 +63,11 @@ export const SearchPanel = observer(() => {
                 onSelect={(e) => onCityChange(e)}
                 placeholder="Куда хотите поехать?"
               >
-                <Input size="large" className={styles.heightBlock} />
+                <Input
+                  size="large"
+                  className={styles.heightBlock}
+                  onChange={(e) => onCityChange(e.target.value)}
+                />
               </AutoComplete>
             </Form.Item>
             <Form.Item name="RangePicker" className={styles.item}>
