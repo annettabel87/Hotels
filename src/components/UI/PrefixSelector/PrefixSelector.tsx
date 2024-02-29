@@ -3,10 +3,11 @@ const { Option } = Select;
 
 interface IPrefixSelectorProps {
   values: string[];
+  initialValue?: string;
 }
-const PrefixSelector = ({ values }: IPrefixSelectorProps) => {
+const PrefixSelector = ({ values, initialValue }: IPrefixSelectorProps) => {
   return (
-    <Form.Item name="prefix" noStyle>
+    <Form.Item name="prefix" noStyle initialValue={initialValue}>
       <Select
         style={{
           width: 70,

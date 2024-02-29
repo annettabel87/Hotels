@@ -41,11 +41,12 @@ export type IFilters = {
 export interface IUser {
   id: number;
   userName: string;
+  surname?: string;
   email: string;
   password: string;
   prefix: string;
   phone: string;
-  history?: IReservation[];
+  history: IReservation[];
   isAuth: boolean;
 }
 
@@ -59,8 +60,10 @@ export interface IReservation {
   endDate: string;
   guests: number;
   timestamp: number;
-  userId: number;
+  userId: number | undefined;
   price: number;
+  transfer?: boolean;
+  description?: string;
 }
 
 export interface ILoginData {
@@ -92,3 +95,16 @@ export interface IDefaultSidebarValues {
   minPrice: number;
   maxPrice: number;
 }
+
+export interface IBookingData {
+  email: string;
+  name: string;
+  surname: string;
+  phone: string;
+  RangePicker: valueProps;
+  guests: number;
+  transfer: boolean;
+  description: string;
+}
+
+export type BookingStatusType = 'pending' | 'booking' | 'reject' | null;

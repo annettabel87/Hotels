@@ -3,10 +3,10 @@ import { IUser } from '../../types/types';
 import { observer } from 'mobx-react-lite';
 import usersStore from '../../store/usersStore/usersStore';
 import { FormButton } from '../UI/FormButton/FormButton';
-import PrefixSelector from '../UI/PrefixSelector/PrefixSelector';
 import { useNavigate } from 'react-router-dom';
-import { ROUTE, layoutForm } from '../../constants/constants';
+import { PREFIXES, ROUTE, layoutForm } from '../../constants/constants';
 import { ResultView } from '../UI/ResultView/ResultView';
+import { PhoneInput } from '../PhoneInput/PhoneInput';
 import styles from './RegisterForm.module.css';
 
 export const RegisterForm = observer(() => {
@@ -19,6 +19,7 @@ export const RegisterForm = observer(() => {
       password: values.password,
       prefix: values.prefix,
       phone: values.phone,
+      history: [],
     });
   };
 
@@ -76,23 +77,12 @@ export const RegisterForm = observer(() => {
             >
               <Input />
             </Form.Item>
-            <Form.Item
-              name="phone"
+            <PhoneInput
               label="Телефон"
-              rules={[
-                {
-                  required: true,
-                  message: 'Введите номер телефона',
-                },
-              ]}
-            >
-              <Input
-                addonBefore={<PrefixSelector values={['375', '7']} />}
-                style={{
-                  width: '100%',
-                }}
-              />
-            </Form.Item>
+              required
+              values={PREFIXES}
+              inputStyle={{ width: '100%' }}
+            />
             <FormButton text={'Зарегистрироваться'} />
           </Form>
         )

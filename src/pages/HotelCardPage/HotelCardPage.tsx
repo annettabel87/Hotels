@@ -7,10 +7,12 @@ import { ReviewCard } from '../../components/ReviewCard/ReviewCard';
 import { useState } from 'react';
 import { CarouselComponent } from '../../components/CarouselComponent/CarouselComponent';
 import styles from './HotelCardPage.module.css';
+import { BookingModal } from '../../components/BookingModal/BookingModal';
 
 export const HotelCardPage = observer(() => {
   const { hotelId } = useParams();
   const [showAllReview, setShowAllReview] = useState(false);
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
   const SHOW_HOTELS_LENGTH = 3;
   if (hotelId) {
@@ -19,6 +21,14 @@ export const HotelCardPage = observer(() => {
 
   const toggleShowReview = () => {
     setShowAllReview((prev) => !prev);
+  };
+
+  const handleOk = () => {
+    setIsModalOpen(false);
+  };
+
+  const handleCancel = () => {
+    setIsModalOpen(false);
   };
 
   return (
@@ -38,12 +48,19 @@ export const HotelCardPage = observer(() => {
                 character={<StarFilled style={{ width: 12 }} />}
               />
               <p className={styles.subtitle}>
-                {hotelsStore.currentHotel.address.street},{' '}
+                {hotelsStore.currentHotel.address.street},
                 {hotelsStore.currentHotel.address.city}
               </p>
             </Col>
             <Col span={4}>
-              <Button type="primary">Забронировать</Button>
+              <Button type="primary" onClick={() => setIsModalOpen(true)}>
+                Забронировать
+              </Button>
+              <BookingModal
+                isModalOpen={isModalOpen}
+                handleOk={handleOk}
+                handleCancel={handleCancel}
+              />
             </Col>
           </Row>
           <Row justify="space-between">

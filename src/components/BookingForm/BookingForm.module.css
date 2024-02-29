@@ -1,0 +1,11 @@
+
+.btnWrapper {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.mainText {
+    color: red;
+    font-size: 16px;
+}

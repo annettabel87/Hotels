@@ -1,8 +1,7 @@
 import { ReactNode, useState } from 'react';
 import { observer } from 'mobx-react-lite';
-import { Button, Dropdown, Form, InputNumber, MenuProps } from 'antd';
-import { MinusOutlined, PlusOutlined } from '@ant-design/icons';
-import hotelsStore from '../../../store/hotelsStore/hotelsStore';
+import { Button, Dropdown, MenuProps } from 'antd';
+import { GuestInput } from '../../GuestsInput/GuestInput';
 import styles from './DropdownComponent.module.css';
 
 interface IInfoOpen {
@@ -15,17 +14,6 @@ interface IDropdownComponentProps {
 export const DropdownComponent = observer(({ children }: IDropdownComponentProps) => {
   const [open, setOpen] = useState(false);
 
-  const increment = () => {
-    if (hotelsStore.searchData.guests !== 10) {
-      hotelsStore.setSearchGuests(hotelsStore.searchData.guests + 1);
-    }
-  };
-  const decrement = () => {
-    if (hotelsStore.searchData.guests !== 1) {
-      hotelsStore.setSearchGuests(hotelsStore.searchData.guests - 1);
-    }
-  };
-
   const handleOpenChange = (open: boolean, info: IInfoOpen) => {
     if (info.source === 'trigger' || open) {
       setOpen(open);
@@ -35,27 +23,7 @@ export const DropdownComponent = observer(({ children }: IDropdownComponentProps
   const items: MenuProps['items'] = [
     {
       key: '1',
-      label: (
-        <Form.Item label="Гостей" name="guests">
-          <Button onClick={decrement} className={styles.btn}>
-            <MinusOutlined className={styles.icon} />
-          </Button>
-          <InputNumber
-            className={styles.inputNumber}
-            min={1}
-            max={10}
-            onChange={(e) => {
-              if (e) {
-                hotelsStore.setSearchGuests(e);
-              }
-            }}
-            value={hotelsStore.searchData.guests}
-          />
-          <Button onClick={increment} className={styles.btn}>
-            <PlusOutlined className={styles.icon} />
-          </Button>
-        </Form.Item>
-      ),
+      label: <GuestInput />,
     },
     {
       key: '2',

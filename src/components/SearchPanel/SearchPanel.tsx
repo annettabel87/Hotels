@@ -1,13 +1,12 @@
 import { useState } from 'react';
-import { AutoComplete, Button, DatePicker, Form, Input } from 'antd';
-const { RangePicker } = DatePicker;
+import { AutoComplete, Button, Form, Input } from 'antd';
 import hotelsStore from '../../store/hotelsStore/hotelsStore';
 import { observer } from 'mobx-react-lite';
 import { DropdownComponent } from './DropdownComponent/DropdownComponent';
 import { getCitiesFromData } from '../../helpers/getCitiesFromData';
-import { valueProps } from '../../types/types';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { FILTERS_NAME, ROUTE } from '../../constants/constants';
+import { RangeDataInput } from '../RangeDataInput/RangeDataInput';
 import styles from './SearchPanel.module.css';
 
 export const SearchPanel = observer(() => {
@@ -26,7 +25,6 @@ export const SearchPanel = observer(() => {
   };
 
   const onCityChange = (value: string) => {
-    console.log(value);
     hotelsStore.addFilter(FILTERS_NAME.CITY, value);
   };
 
@@ -34,13 +32,6 @@ export const SearchPanel = observer(() => {
     label: city,
     value: city,
   }));
-
-  const onDataChange = (values: valueProps) => {
-    if (values[0] && values[1]) {
-      hotelsStore.setSearchStartDate(values[0].toString());
-      hotelsStore.setSearchEndDate(values[1].toString());
-    }
-  };
 
   const onSubmit = () => {
     navigate(ROUTE.HOTELS);
@@ -70,18 +61,10 @@ export const SearchPanel = observer(() => {
                 />
               </AutoComplete>
             </Form.Item>
-            <Form.Item name="RangePicker" className={styles.item}>
-              <RangePicker
-                style={{ width: '100%' }}
-                placeholder={['Дата заезда', 'Дата отъезда']}
-                onChange={(e) => {
-                  if (e) {
-                    onDataChange(e);
-                  }
-                }}
-                className={styles.heightBlock}
-              />
-            </Form.Item>
+            <RangeDataInput
+              rangeStyles={{ width: '100%', height: 50 }}
+              itemStyles={{ flex: '3 1 auto', marginBottom: 0 }}
+            />
             <Form.Item className={styles.item}>
               <DropdownComponent>
                 <Button className={styles.heightBlock}>

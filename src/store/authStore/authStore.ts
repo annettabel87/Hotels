@@ -1,5 +1,5 @@
 import { makeAutoObservable } from 'mobx';
-import { IUser } from '../../types/types';
+import { IReservation, IUser, BookingStatusType } from '../../types/types';
 import usersStore from '../usersStore/usersStore';
 import { LOCAL_STORAGE_KEYS } from '../../constants/constants';
 
@@ -7,6 +7,8 @@ class AuthStore {
   private _profile: IUser | null = null;
   isLoading: boolean = false;
   error: string = '';
+  bookingStatus: BookingStatusType = null;
+  bookingError: string = '';
 
   constructor() {
     makeAutoObservable(this);
@@ -68,6 +70,39 @@ class AuthStore {
   get profile() {
     return this._profile;
   }
+
+  addReservation = (data: IReservation) => {
+    if (this.profile) {
+      this.profile.history = [data, ...this.profile.history];
+    }
+  };
+
+  booking = async (data: IReservation) => {
+    try {
+      new Promise((res, rej) => {
+        this.bookingStatus = 'pending';
+        const random = Math.random();
+        if (random > 0.5) {
+          res(
+            setTimeout(() => {
+              this.bookingStatus = 'booking';
+              this.addReservation(data);
+            }, 2000)
+          );
+        } else {
+          rej(
+            setTimeout(() => {
+              this.bookingStatus = 'reject';
+            }, 2000)
+          );
+        }
+      });
+    } catch (error) {
+      this.bookingError = 'Что-то пошло не так...';
+    } finally {
+      this.bookingStatus = null;
+    }
+  };
 }
 
 export default new AuthStore();

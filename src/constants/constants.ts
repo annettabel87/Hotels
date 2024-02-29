@@ -40,3 +40,5 @@ export const REVIEW_MENU_ITEM: IReviewMenuItem[] = [
   { value: 6, label: 'Хорошо: 6+' },
   { value: 5, label: 'Неплохо: 5+' },
 ];
+
+export const PREFIXES = ['375', '7'];
