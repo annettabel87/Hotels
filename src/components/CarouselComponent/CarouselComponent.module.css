@@ -1,0 +1,22 @@
+.carousel {
+    height: 400px;
+    width: 500px;
+}
+
+.imgContainer {
+    height: 400px;
+    width: 400px;
+    background: '#364d79';
+    overflow: hidden;
+}
+
+.carouselImg {
+    object-fit: cover;
+    object-position: center center;
+    height: inherit;
+}
+
+.arrow {
+    font-size: 20px;
+    color: 'black',
+}

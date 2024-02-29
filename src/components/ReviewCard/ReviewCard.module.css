@@ -1,0 +1,28 @@
+.textBold{
+    font-weight: 500;
+}
+
+.card {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    border: 1px solid var(--sidebar-border-color);
+    padding: 15px 10px;
+    border-radius: var(--border-radius-blocks);
+}
+
+.header {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.btn {
+    color: var(--main-color);
+    padding: 4px 0px;
+}
+
+.btn:hover {
+    color: var(--main-color);
+    opacity: 0.7;
+}

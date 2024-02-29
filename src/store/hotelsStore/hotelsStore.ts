@@ -13,6 +13,7 @@ class HotelsStore {
   defaultMinPrice = 5000;
   defaultMaxPrice = 0;
   defaultCities: string[] = [];
+  _currentHotel: IHotel | null = null;
 
   constructor() {
     makeAutoObservable(this);
@@ -47,9 +48,16 @@ class HotelsStore {
     this.filters = filters;
   };
 
-  getHotelById = (id: number) => {
-    return this._hotels.find((hotel) => hotel.id === id);
+  findHotelById = (id: number) => {
+    const data = this._hotels.find((hotel) => hotel.id === id);
+    if (data) {
+      this._currentHotel = data;
+    }
   };
+
+  get currentHotel() {
+    return this._currentHotel;
+  }
 
   addFilter = (filter: FiltersType, value: string | number) => {
     this.filters = { ...this.filters, [filter]: value };
@@ -108,6 +116,7 @@ class HotelsStore {
   setSearchEndDate = (date: string) => {
     this.searchData.endDate = date;
   };
+
   get searchData() {
     return this._searchData;
   }
