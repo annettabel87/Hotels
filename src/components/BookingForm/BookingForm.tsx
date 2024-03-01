@@ -9,6 +9,7 @@ import { ResultBlock } from './ResultBlock/ResultBlock';
 import { PhoneInput } from '../PhoneInput/PhoneInput';
 import { PREFIXES } from '../../constants/constants';
 import { GuestInput } from '../GuestsInput/GuestInput';
+import { useEffect } from 'react';
 import styles from './BookingForm.module.css';
 
 interface IBookingFormProps {
@@ -17,6 +18,10 @@ interface IBookingFormProps {
 
 export const BookingForm = observer(({ handleCancel }: IBookingFormProps) => {
   const [form] = Form.useForm();
+
+  useEffect(() => {
+    authStore.setBookingStatus(null);
+  }, []);
 
   const onSubmit = (values: IBookingData) => {
     if (hotelsStore.currentHotel && authStore.profile) {
@@ -27,7 +32,7 @@ export const BookingForm = observer(({ handleCancel }: IBookingFormProps) => {
         },
         startDate: hotelsStore.searchData.startDate as string,
         endDate: hotelsStore.searchData.endDate as string,
-        guests: values.guests,
+        guests: hotelsStore.searchData.guests,
         timestamp: Date.now(),
         userId: authStore.profile.id,
         price: hotelsStore.currentHotel.price,
@@ -100,13 +105,13 @@ export const BookingForm = observer(({ handleCancel }: IBookingFormProps) => {
       />
       <RangeDataInput label="Даты" rangeStyles={{ width: '100%' }} />
       <GuestInput />
-      <Form.Item>
+      <Form.Item name="transfer" valuePropName="checked">
         <Checkbox>
           <span>Мне бы хотелось запросить трансфер</span>
         </Checkbox>
       </Form.Item>
-      <Form.Item>
-        <TextArea name="description" rows={4} />
+      <Form.Item name="description">
+        <TextArea rows={4} />
       </Form.Item>
       <div className={styles.btnWrapper}>
         <Form.Item>
@@ -130,6 +135,7 @@ export const BookingForm = observer(({ handleCancel }: IBookingFormProps) => {
       {authStore.profile === null && (
         <p className={styles.mainText}>Авторизуйтесь для бронирования</p>
       )}
+      <p className={styles.error}>{authStore.bookingError}</p>
     </Form>
   );
 });

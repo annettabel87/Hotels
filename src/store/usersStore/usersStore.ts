@@ -44,6 +44,10 @@ class UsersStore {
     return this._users.find((item) => item.email === email && item.password === password);
   };
 
+  findUserById = (id: number) => {
+    return this._users.findIndex((item) => item.id === id);
+  };
+
   loginUser = (email: string, password: string) => {
     this.setError('');
     const user = this.findUser(email, password);
@@ -51,6 +55,13 @@ class UsersStore {
       user.isAuth = true;
     }
     return user;
+  };
+
+  updateProfile = (data: IUser) => {
+    const userIndex = this.findUserById(data.id);
+    if (userIndex !== -1) {
+      this._users[userIndex] = data;
+    }
   };
 }
 

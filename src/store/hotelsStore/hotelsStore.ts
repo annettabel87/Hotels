@@ -51,7 +51,7 @@ class HotelsStore {
   findHotelById = (id: number) => {
     const data = this._hotels.find((hotel) => hotel.id === id);
     if (data) {
-      this._currentHotel = data;
+      this.setCurrentHotel(data);
     }
   };
 
@@ -120,6 +120,10 @@ class HotelsStore {
   get searchData() {
     return this._searchData;
   }
+
+  setCurrentHotel = (data: IHotel) => {
+    this._currentHotel = data;
+  };
 }
 
 export default new HotelsStore();

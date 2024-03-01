@@ -17,7 +17,7 @@ export const GuestInput = observer(() => {
   };
 
   return (
-    <Form.Item label="Гостей" name="guests">
+    <Form.Item label="Гостей" name="guests" initialValue={hotelsStore.searchData.guests}>
       <Button onClick={decrement} className={styles.btn}>
         <MinusOutlined className={styles.icon} />
       </Button>

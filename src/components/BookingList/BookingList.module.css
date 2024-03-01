@@ -1,0 +1,15 @@
+.container {
+  flex: 1;  
+  padding: 15px;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.title {
+  text-align: center;
+}
+
+.centre {
+  text-align: center;
+}

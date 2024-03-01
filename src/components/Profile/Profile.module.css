@@ -1,0 +1,9 @@
+.container {
+  flex: 1;
+}
+
+.phoneBlock {
+  display: flex;
+  align-items: center;
+  gap: 35px;
+}

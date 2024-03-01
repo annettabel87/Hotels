@@ -50,6 +50,7 @@ export interface IUser {
   isAuth: boolean;
 }
 
+export type UpdatedProfileData = Partial<IUser>;
 export interface IReservation {
   id: number;
   hotelInfo: {
@@ -62,7 +63,7 @@ export interface IReservation {
   timestamp: number;
   userId: number | undefined;
   price: number;
-  transfer?: boolean;
+  transfer: boolean;
   description?: string;
 }
 
