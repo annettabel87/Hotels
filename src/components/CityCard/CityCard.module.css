@@ -1,0 +1,31 @@
+.container {
+  flex: 1;
+  border-radius: var(--border-radius-blocks);
+  overflow: hidden;
+  position: relative;
+}
+
+.img {
+  object-fit: cover;
+  object-position: center center;
+  height: inherit;
+}
+
+.imgTitle {
+  position: absolute;
+  top: 0;
+  z-index: 23;
+  width: 100%;
+  height: 100%;  
+  padding: 15px 16px 24px;
+  transition: all 0.3s;
+}
+
+.imgTitle:hover  {
+  background: linear-gradient(180deg,rgba(0,27,65,.85) 0,rgba(0,27,65,0));
+}
+
+.imgText {
+  color: white;
+  text-shadow: 1px 1px var(--dark-text);
+}

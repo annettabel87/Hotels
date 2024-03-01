@@ -42,3 +42,26 @@ export const REVIEW_MENU_ITEM: IReviewMenuItem[] = [
 ];
 
 export const PREFIXES = ['375', '7'];
+
+export const cityCardsData = [
+  {
+    id: 1,
+    city: 'Минск',
+  },
+  {
+    id: 2,
+    city: 'Брест',
+  },
+  {
+    id: 3,
+    city: 'Гродно',
+  },
+  {
+    id: 4,
+    city: 'Пинск',
+  },
+  {
+    id: 5,
+    city: 'Барановичи',
+  },
+];
