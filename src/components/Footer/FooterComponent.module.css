@@ -1,4 +1,21 @@
 .footer {
-    color: var(--dark-text);
+    max-width: var(---container-width);
     background-color: var(--main-white);
+    padding: 20px 15px 15px;   
+}
+
+.container {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  align-items: center;
+}
+  
+.icon {
+  width: 30px;
+  transition: all 0.3s;
+}
+  
+.icon:hover {
+  opacity: 0.7;
 }
