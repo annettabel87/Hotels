@@ -24,3 +24,10 @@
 .btn:hover {
   opacity: 0.9;
 }
+
+
+@media screen and (max-width: 499px) {
+  .btnBlock {
+    display: none;
+  }
+}
