@@ -9,6 +9,7 @@
 
 .form {
     display: flex;  
+    flex-wrap: wrap;
     gap: 5px;  
     background-color: var(--color-accent-bg);
     border-radius: var(--border-radius-blocks);

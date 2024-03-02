@@ -8,6 +8,25 @@
   gap: 15px;
 }
 
+@media screen and (max-width: 1140px) {
+  .container {
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+}
+
+@media screen and (max-width: 672px) {
+  .container {
+    padding-top: 100px;
+  }
+}
+
+@media screen and (max-width: 484px) {
+  .container {
+    padding-top: 150px;
+  }
+}
+
 .doubleBlock {
   display: flex;
   justify-content: space-between;
@@ -22,3 +41,9 @@
   gap: 15px;
 }
 
+@media screen and (max-width: 500px) {
+  .doubleBlock, .tripleBlock  {
+    flex-direction: column;
+    align-items: stretch;
+  }
+}
