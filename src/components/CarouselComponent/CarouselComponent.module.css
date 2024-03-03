@@ -1,5 +1,5 @@
 .carousel {    
-    overflow: hidden;
+    overflow: hidden;    
 }
 
 .carouselRoot {
@@ -16,6 +16,16 @@
 .imgContainer {    
     background: '#364d79';
     overflow: hidden;
+    height: 400px;
+    width: 400px;
+}
+
+
+@media screen and (max-width: 700px) {
+    .imgContainer {
+        height: 300px;
+        width: 400px;
+    }
 }
 
 .carouselImg {

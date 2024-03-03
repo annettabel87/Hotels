@@ -42,7 +42,13 @@ export const CarouselComponent = observer(({ photo }: ICarouselComponentProps) =
     >
       {photo.map((item) => (
         <div key={item.id} className={styles.imgContainer}>
-          <Image src={item.url} alt="photo" className={styles.carouselImg} />
+          <Image
+            src={item.url}
+            alt="photo"
+            className={styles.carouselImg}
+            height={'100%'}
+            width={'100%'}
+          />
         </div>
       ))}
     </Carousel>

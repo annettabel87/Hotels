@@ -6,7 +6,7 @@ import hotelsStore from '../../store/hotelsStore/hotelsStore';
 import { ROUTE } from '../../constants/constants';
 import { observer } from 'mobx-react-lite';
 import { useEffect, useState } from 'react';
-import { MenuOutlined } from '@ant-design/icons';
+import { MenuOutlined, DownOutlined } from '@ant-design/icons';
 import styles from './HotelsPage.module.css';
 
 export const HotelsPage = observer(() => {
@@ -34,6 +34,7 @@ export const HotelsPage = observer(() => {
             <Button onClick={toggleIsOpen} className={styles.menuBtn}>
               <MenuOutlined />
               <span>Фильтры</span>
+              <DownOutlined />
             </Button>
             <SideBar
               isOpen={isOpen}
