@@ -7,10 +7,15 @@ import { useNavigate } from 'react-router-dom';
 import { PREFIXES, ROUTE, layoutForm } from '../../constants/constants';
 import { ResultView } from '../UI/ResultView/ResultView';
 import { PhoneInput } from '../PhoneInput/PhoneInput';
+import { useEffect } from 'react';
 import styles from './RegisterForm.module.css';
 
 export const RegisterForm = observer(() => {
   const navigate = useNavigate();
+
+  useEffect(() => {
+    usersStore.setError('');
+  }, []);
 
   const onSubmit = (values: Omit<IUser, 'id' | 'isAuth'>) => {
     usersStore.addUser({

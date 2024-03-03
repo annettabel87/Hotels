@@ -21,7 +21,7 @@ export const CarouselComponent = observer(({ photo }: ICarouselComponentProps) =
             height={30}
             style={{
               fontSize: '30px',
-              color: 'black',
+              color: 'white',
             }}
           />
         </div>
@@ -33,7 +33,7 @@ export const CarouselComponent = observer(({ photo }: ICarouselComponentProps) =
             height={30}
             style={{
               fontSize: '30px',
-              color: 'black',
+              color: 'white',
             }}
           />
         </div>

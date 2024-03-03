@@ -65,3 +65,5 @@ export const cityCardsData = [
     city: 'Барановичи',
   },
 ];
+
+export const initialCities = ['Минск', 'Брест', 'Гродно'];

@@ -109,8 +109,6 @@ class AuthStore {
       });
     } catch (error) {
       this.bookingError = 'Что-то пошло не так...';
-    } finally {
-      this.setBookingStatus(null);
     }
   };
 

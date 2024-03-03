@@ -7,6 +7,7 @@ import { ROUTE, layoutForm } from '../../constants/constants';
 import { ResultView } from '../UI/ResultView/ResultView';
 import authStore from '../../store/authStore/authStore';
 import styles from './LoginForm.module.css';
+import { useEffect } from 'react';
 
 export const LoginForm = observer(() => {
   const navigate = useNavigate();
@@ -14,6 +15,10 @@ export const LoginForm = observer(() => {
   const onSubmit = (values: ILoginData) => {
     authStore.login(values.email, values.password);
   };
+
+  useEffect(() => {
+    authStore.setError('');
+  }, []);
 
   return (
     <>

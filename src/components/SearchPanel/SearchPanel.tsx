@@ -5,12 +5,13 @@ import { observer } from 'mobx-react-lite';
 import { DropdownComponent } from './DropdownComponent/DropdownComponent';
 import { getCitiesFromData } from '../../helpers/getCitiesFromData';
 import { useLocation, useNavigate } from 'react-router-dom';
-import { FILTERS_NAME, ROUTE } from '../../constants/constants';
+import { FILTERS_NAME, ROUTE, initialCities } from '../../constants/constants';
 import { RangeDataInput } from '../RangeDataInput/RangeDataInput';
+import { CloseOutlined } from '@ant-design/icons';
 import styles from './SearchPanel.module.css';
 
 export const SearchPanel = observer(() => {
-  const [autoCompleteResult, setAutoCompleteResult] = useState<string[]>([]);
+  const [autoCompleteResult, setAutoCompleteResult] = useState<string[]>(initialCities);
   const navigate = useNavigate();
   const location = useLocation();
 
@@ -53,6 +54,7 @@ export const SearchPanel = observer(() => {
                 onChange={onAutoCompleteChange}
                 onSelect={(e) => onCityChange(e)}
                 placeholder="Куда хотите поехать?"
+                allowClear={{ clearIcon: <CloseOutlined /> }}
               >
                 <Input
                   size="large"
