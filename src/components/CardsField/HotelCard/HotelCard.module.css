@@ -7,6 +7,21 @@
     gap: 16px;
 }
 
+@media screen and (max-width: 430px) {
+    .card {
+        flex-direction: column;
+        align-items: center;
+    }
+    .ribbonText {
+        display: none;
+    }
+}
+
+@media screen and (min-width: 431px) {
+  .ribbonImg {
+    display: none;
+  }
+}
 .imgWrapper {
     width: 200px;
     height: 200px;
@@ -44,6 +59,22 @@
     color: var(--colored-button-bg);
 }
 
+@media screen and (max-width: 500px) {
+    .title {
+        font-size: 17px;
+        line-height: 20px;
+    }
+    .description {
+        gap: 8px;
+    }
+}
+
 .subtitle {
     color: var(--colored-button-bg);
+}
+
+@media screen and (max-width: 800px) {
+    .column {
+        flex-direction: column;
+    }
 }

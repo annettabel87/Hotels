@@ -11,10 +11,11 @@ interface ISideBarProps {
   defaultValues: IDefaultSidebarValues;
   addFilter: (filter: string, value: string | number) => void;
   filters: IFilters;
+  isOpen: boolean;
 }
 
 export const SideBar = observer(
-  ({ defaultValues, addFilter, filters }: ISideBarProps) => {
+  ({ defaultValues, addFilter, filters, isOpen }: ISideBarProps) => {
     const { cities, minPrice, maxPrice } = defaultValues;
 
     const onChangePriceComplete = (value: number[]) => {
@@ -35,7 +36,7 @@ export const SideBar = observer(
     };
 
     return (
-      <aside className={styles.container}>
+      <aside className={styles.container} style={{ display: !isOpen ? 'none' : 'flex' }}>
         <SliderBlock
           min={minPrice}
           max={maxPrice}
