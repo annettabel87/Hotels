@@ -7,3 +7,10 @@
   align-items: center;
   gap: 35px;
 }
+
+@media screen and (max-width: 500px) {
+  .phoneBlock {
+    flex-direction: column;
+    align-items: baseline;
+  }
+}

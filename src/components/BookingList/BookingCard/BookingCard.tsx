@@ -17,6 +17,7 @@ export const BookingCard = observer((props: IReservation) => {
       }
       bordered={false}
       style={{ width: '100%' }}
+      size="small"
     >
       <div className={styles.row}>
         <h3>Даты: </h3>

@@ -13,3 +13,17 @@
 .centre {
   text-align: center;
 }
+
+.cardField {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  flex-wrap: wrap;
+}
+
+@media screen and (max-width: 900px) {
+  .cardField {
+    flex-direction: row;
+    align-items: center;
+  }
+}
