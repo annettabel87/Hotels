@@ -9,6 +9,7 @@
     border: 1px solid var(--sidebar-border-color);
     padding: 15px 10px;
     border-radius: var(--border-radius-blocks);
+    width: 100%;
 }
 
 .header {

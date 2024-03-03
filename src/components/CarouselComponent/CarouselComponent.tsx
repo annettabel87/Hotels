@@ -13,6 +13,7 @@ export const CarouselComponent = observer(({ photo }: ICarouselComponentProps) =
     <Carousel
       dots={false}
       arrows={true}
+      rootClassName={styles.carouselRoot}
       prevArrow={
         <div>
           <LeftOutlined
@@ -41,13 +42,7 @@ export const CarouselComponent = observer(({ photo }: ICarouselComponentProps) =
     >
       {photo.map((item) => (
         <div key={item.id} className={styles.imgContainer}>
-          <Image
-            src={item.url}
-            alt="photo"
-            width={500}
-            height={400}
-            className={styles.carouselImg}
-          />
+          <Image src={item.url} alt="photo" className={styles.carouselImg} />
         </div>
       ))}
     </Carousel>

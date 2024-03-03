@@ -31,15 +31,15 @@ body {
 
 .ant-carousel .slick-prev,
 .ant-carousel .slick-prev:focus {
-  left: -35px;
-  z-index: 2;
+  left: 5px;
+  z-index: 10;
   transition: all 0.3s;
 } 
 
  .ant-carousel .slick-next,
 .ant-carousel .slick-next:focus {
-  right: -35px;
-  z-index: 2;
+  right: 15px;
+  z-index: 10;
   transition: all 0.3s;
 
 }

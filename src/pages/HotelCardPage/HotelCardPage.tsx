@@ -39,8 +39,12 @@ export const HotelCardPage = observer(() => {
         </div>
       ) : (
         <div className={styles.container}>
-          <Row>
-            <Col span={20}>
+          <Row
+            wrap={true}
+            gutter={[10, 10]}
+            justify={{ xs: 'center', sm: 'space-between' }}
+          >
+            <Col flex={1}>
               <h2 className={styles.title}>{hotelsStore.currentHotel.title}</h2>
               <Rate
                 disabled
@@ -52,7 +56,7 @@ export const HotelCardPage = observer(() => {
                 {hotelsStore.currentHotel.address.city}
               </p>
             </Col>
-            <Col span={4}>
+            <Col flex={1} style={{ textAlign: 'right' }}>
               <Button type="primary" onClick={() => setIsModalOpen(true)}>
                 Забронировать
               </Button>
@@ -64,14 +68,14 @@ export const HotelCardPage = observer(() => {
             </Col>
           </Row>
           <Row justify="space-between">
-            <Col span={12} className={styles.flexColumn}>
+            <Col lg={12} className={styles.flexColumn}>
               <CarouselComponent photo={hotelsStore.currentHotel.photo} />
               <div className={styles.description}>
                 <h3 className={styles.titleDescription}>Описание отеля</h3>
                 <p>{hotelsStore.currentHotel.description}</p>
               </div>
             </Col>
-            <Col span={11}>
+            <Col lg={11}>
               <div className={styles.flexColumn}>
                 <div className={styles.header}>
                   <h3 className={styles.titleDescription}>Отзывы</h3>

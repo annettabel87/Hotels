@@ -1,11 +1,19 @@
-.carousel {
-    height: 400px;
-    width: 500px;
+.carousel {    
+    overflow: hidden;
 }
 
-.imgContainer {
-    height: 400px;
-    width: 400px;
+.carouselRoot {
+    max-width: 500px;
+    overflow: hidden;
+}
+
+@media screen and (max-width: 700px) {
+    .carouselRoot {
+        max-width: calc(100vw - 40px );
+    }
+}
+
+.imgContainer {    
     background: '#364d79';
     overflow: hidden;
 }
@@ -14,6 +22,7 @@
     object-fit: cover;
     object-position: center center;
     height: inherit;
+    overflow: hidden;
 }
 
 .arrow {
